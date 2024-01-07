@@ -1,6 +1,6 @@
-# tondeuse
+# tondeuse à gazon automatique
 
-Brique applicative qui répond au besoin de la société MowItNow
+une application qui répond au besoin de la société MowItNow
 
 ## Stack technique
 
@@ -8,10 +8,11 @@ Brique applicative qui répond au besoin de la société MowItNow
 * Maven 3.5.1
 * Junit 4.13.1
 
-## Run
+## Execution
 
+```shell
 mvn compile exec:java -Dexec.mainClass="com.tondeuse.application.TondeuseApplicationMain"
-
+```
 # Méthodologie
 
 J'ai opté pour l'approche Domain-Driven Design afin de faire correspondre le code et 
