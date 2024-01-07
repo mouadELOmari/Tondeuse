@@ -1,6 +1,6 @@
-# tondeuse à gazon automatique
+# Tondeuse à gazon automatique
 
-une application qui répond au besoin de la société MowItNow
+Une application qui répond au besoin de la société MowItNow
 
 ## Stack technique
 
