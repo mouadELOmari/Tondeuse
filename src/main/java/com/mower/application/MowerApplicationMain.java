@@ -22,15 +22,25 @@ public class MowerApplicationMain {
     public static void main(String[] args) {
         LOGGER.log(Level.INFO, "Mower application started.");
 
+        try {
+            processMowerApplication(args);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "An error occurred: {0}", e.getMessage());
+        } finally {
+            LOGGER.log(Level.INFO, "Mower application terminated.");
+        }
+    }
+
+    private static void processMowerApplication(String[] args) throws Exception {
         if (args.length < 1) {
-            LOGGER.log(Level.SEVERE, "Invalid path. Please provide a valid file path.");
-            LOGGER.log(Level.INFO, "Mower application terminated due to an invalid path.");
-            return;        }
+            throw new IllegalArgumentException("Invalid path. Please provide a valid file path.");
+        }
 
         // Get the filename from the command line arguments
         final String filename = args[0];
 
         LOGGER.log(Level.INFO, "Processing file: {0}", filename);
+
         // Create an instance of the MowerController with a FileReader implementation
         IMowerController mowerController = new MowerController(new FileReader());
 
