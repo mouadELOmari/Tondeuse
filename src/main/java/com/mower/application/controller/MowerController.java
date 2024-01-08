@@ -1,7 +1,7 @@
 package com.mower.application.controller;
 
-import com.mower.application.LawnCreator;
-import com.mower.application.MowerCreator;
+import com.mower.application.factory.ILawnFactory;
+import com.mower.application.factory.IMowerFactory;
 import com.mower.application.io.FileContent;
 import com.mower.application.io.IFileReader;
 import com.mower.domain.Lawn;
@@ -22,24 +22,26 @@ public class MowerController implements IMowerController {
     private static final String READ_FILE_ERROR_EXCEPTION = "An error occurred while reading the file.";
 
     private final IFileReader fileReader;
+    private final ILawnFactory lawnCreator;
+    private final IMowerFactory mowerCreator;
 
     /**
      * Constructor for MowerController.
      *
-     * @param fileReader The file reader implementation to be used.
+     * @param fileReader  The file reader implementation to be used.
+     * @param lawnCreator The lawn creator implementation to be used.
+     * @param mowerCreator The mower creator implementation to be used.
      */
-    public MowerController(IFileReader fileReader) {
+    public MowerController(IFileReader fileReader, ILawnFactory lawnCreator, IMowerFactory mowerCreator) {
         this.fileReader = fileReader;
+        this.lawnCreator = lawnCreator;
+        this.mowerCreator = mowerCreator;
     }
 
     @Override
     public String getFinalPosition(String filePath) {
         try {
             LOGGER.log(Level.INFO, "Initializing MowerController...");
-
-            // Initialization of file readers and creators
-            LawnCreator lawnCreator = new LawnCreator();
-            MowerCreator mowerCreator = new MowerCreator();
 
             LOGGER.log(Level.INFO, "Reading file: {0}", filePath);
             FileContent fileContent = fileReader.readFile(filePath);

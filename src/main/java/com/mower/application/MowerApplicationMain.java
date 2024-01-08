@@ -1,8 +1,7 @@
 package com.mower.application;
 
 import com.mower.application.controller.IMowerController;
-import com.mower.application.controller.MowerController;
-import com.mower.application.io.FileReader;
+import com.mower.application.factory.MowerControllerFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,8 +40,8 @@ public class MowerApplicationMain {
 
         LOGGER.log(Level.INFO, "Processing file: {0}", filename);
 
-        // Create an instance of the MowerController with a FileReader implementation
-        IMowerController mowerController = new MowerController(new FileReader());
+        // Create an instance of the MowerController using the factory
+        IMowerController mowerController = MowerControllerFactory.createMowerController();
 
         // Get the final position of the mowers
         String finalPosition = mowerController.getFinalPosition(filename);

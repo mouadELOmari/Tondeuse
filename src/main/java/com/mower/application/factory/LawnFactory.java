@@ -1,4 +1,4 @@
-package com.mower.application;
+package com.mower.application.factory;
 
 import com.mower.application.utils.StringUtils;
 import com.mower.domain.Lawn;
@@ -6,9 +6,9 @@ import com.mower.domain.Lawn;
 import java.util.Optional;
 
 /**
- * The LawnCreator class is responsible for creating an instance of Lawn from an input line.
+ * The LawnFactory class is responsible for creating an instance of Lawn from an input line.
  */
-public class LawnCreator {
+public class LawnFactory implements ILawnFactory{
 
     /**
      * Creates a lawn from an input line.

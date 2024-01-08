@@ -1,4 +1,4 @@
-package com.mower.application;
+package com.mower.application.factory;
 
 import com.mower.domain.Instruction;
 import com.mower.domain.Orientation;
@@ -12,11 +12,11 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-public class MowerCreatorTest {
+public class MowerFactoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateMowersFromLinesWithEmptyLines() {
-        MowerCreator mowerCreator = new MowerCreator();
+        MowerFactory mowerCreator = new MowerFactory();
         List<String> lines = Arrays.asList("", "");
 
         mowerCreator.createMowersFromLines(lines);
@@ -24,7 +24,7 @@ public class MowerCreatorTest {
 
     @Test
     public void testCreateMowersFromLinesWithNonEmptyLines() {
-        MowerCreator mowerCreator = new MowerCreator();
+        MowerFactory mowerCreator = new MowerFactory();
         List<String> lines = Arrays.asList("12N", "AADG", "34E", "DDAA");
 
         List<Mower> mowers = mowerCreator.createMowersFromLines(lines);
@@ -42,14 +42,14 @@ public class MowerCreatorTest {
 
     @Test
     public void testCreateMowerFromLinesWithEmptyPositionLine() {
-        MowerCreator mowerCreator = new MowerCreator();
+        MowerFactory mowerCreator = new MowerFactory();
         assertThrows(IllegalArgumentException.class, () ->
                 mowerCreator.createMowerFromLines("", "AADG"));
     }
 
     @Test
     public void testCreateMowerFromLinesWithNonEmptyPositionLine() {
-        MowerCreator mowerCreator = new MowerCreator();
+        MowerFactory mowerCreator = new MowerFactory();
         Mower mower = mowerCreator.createMowerFromLines("12N", "AADG");
 
         assertEquals(new Position(1, 2, Orientation.N), mower.position());
@@ -59,7 +59,7 @@ public class MowerCreatorTest {
 
     @Test
     public void testParseInstructions() {
-        MowerCreator mowerCreator = new MowerCreator();
+        MowerFactory mowerCreator = new MowerFactory();
         List<Instruction> instructions = mowerCreator.parseInstructions("AADG");
 
         assertEquals(Arrays.asList(Instruction.A, Instruction.A, Instruction.D, Instruction.G), instructions);

@@ -1,4 +1,4 @@
-package com.mower.application;
+package com.mower.application.factory;
 
 import com.mower.application.utils.StringUtils;
 import com.mower.domain.Instruction;
@@ -6,16 +6,15 @@ import com.mower.domain.Orientation;
 import com.mower.domain.Position;
 import com.mower.domain.Mower;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * The MowerCreator class is responsible for creating Mower objects
+ * The MowerFactory class is responsible for creating Mower objects
  * from position and instruction lines.
  */
-public class MowerCreator {
+public class MowerFactory implements IMowerFactory {
 
     /**
      * Exception message for an empty or null position line.
