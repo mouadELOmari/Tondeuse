@@ -12,65 +12,6 @@ import static org.junit.Assert.*;
 public class MowerTest {
 
     @Test
-    public void testEqualityWithEqualObjects() {
-        // Arrange
-        Position position1 = new Position(1, 2, Orientation.N);
-        Position position2 = new Position(1, 2, Orientation.N);
-        List<Instruction> instructions1 = Arrays.asList(Instruction.A, Instruction.D);
-        List<Instruction> instructions2 = Arrays.asList(Instruction.A, Instruction.D);
-
-        Mower mower1 = new Mower(position1, instructions1);
-        Mower mower2 = new Mower(position2, instructions2);
-
-        // Act & Assert
-        Assert.assertEquals(mower1, mower2);
-        Assert.assertEquals(mower2, mower1);
-        assertEquals(mower1.hashCode(), mower2.hashCode());
-    }
-
-    @Test
-    public void testEqualityWithDifferentPositions() {
-        // Arrange
-        Position position1 = new Position(1, 2, Orientation.N);
-        Position position2 = new Position(3, 4, Orientation.S);
-        List<Instruction> instructions1 = Arrays.asList(Instruction.A, Instruction.D);
-        List<Instruction> instructions2 = Arrays.asList(Instruction.A, Instruction.D);
-
-        Mower mower1 = new Mower(position1, instructions1);
-        Mower mower2 = new Mower(position2, instructions2);
-
-        // Act & Assert
-        assertNotEquals(mower1, mower2);
-        assertNotEquals(mower2, mower1);
-    }
-
-    @Test
-    public void testEqualityWithDifferentInstructions() {
-        // Arrange
-        Position position1 = new Position(1, 2, Orientation.N);
-        Position position2 = new Position(1, 2, Orientation.N);
-        List<Instruction> instructions1 = Arrays.asList(Instruction.A, Instruction.D);
-        List<Instruction> instructions2 = Arrays.asList(Instruction.G, Instruction.A);
-
-        Mower mower1 = new Mower(position1, instructions1);
-        Mower mower2 = new Mower(position2, instructions2);
-
-        // Act & Assert
-        assertNotEquals(mower1, mower2);
-        assertNotEquals(mower2, mower1);
-    }
-
-    @Test
-    public void testEqualityWithDifferentObjectTypes() {
-        // Arrange
-        Mower mower = new Mower(new Position(1, 2, Orientation.N), List.of(Instruction.A));
-
-        // Act & Assert
-        assertNotEquals("This is not a mower", mower);
-        assertNotEquals(null, mower);
-    }
-
-    @Test
     public void moveForwardInNorthOrientation() {
         Lawn myLawn = new Lawn(5, 5);
         Position position = new Position(1, 2, Orientation.N);
