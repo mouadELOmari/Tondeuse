@@ -11,7 +11,7 @@ Une application qui répond au besoin de la société MowItNow
 ## Execution
 
 ```shell
-mvn compile exec:java -Dexec.mainClass="com.mower.application.MowerApplicationMain"
+mvn compile exec:java -Dexec.mainClass=com.mower.application.MowerApplicationMain -Dexec.args="src/resources/input.txt"
 ```
 # Méthodologie
 
