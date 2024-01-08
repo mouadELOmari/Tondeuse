@@ -8,6 +8,8 @@ import com.mower.domain.Mower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * The MowerCreator class is responsible for creating Mower objects
@@ -28,14 +30,9 @@ public class MowerCreator {
      * @throws IllegalArgumentException If the position line is empty or null.
      */
     public List<Mower> createMowersFromLines(List<String> lines) {
-        List<Mower> mowers = new ArrayList<>();
-        for (int i = 0; i < lines.size(); i += 2) {
-            String positionLine = lines.get(i);
-            String instructionsLine = lines.get(i + 1);
-            Mower mower = createMowerFromLines(positionLine, instructionsLine);
-            mowers.add(mower);
-        }
-        return mowers;
+        return IntStream.range(0, lines.size() / 2)
+                .mapToObj(i -> createMowerFromLines(lines.get(i * 2), lines.get(i * 2 + 1)))
+                .collect(Collectors.toList());
     }
 
     /**
