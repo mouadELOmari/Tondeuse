@@ -21,7 +21,7 @@ public class MowerApplicationMain {
      */
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("Invalid filename");
+            System.out.println("Invalid path");
         } else {
             // Get the filename from the command line arguments
             final String filename = args[0];
