@@ -11,7 +11,7 @@ Une application qui répond au besoin de la société MowItNow
 ## Execution
 
 ```shell
-mvn compile exec:java -Dexec.mainClass="com.tondeuse.application.TondeuseApplicationMain"
+mvn compile exec:java -Dexec.mainClass="com.mower.application.MowerApplicationMain"
 ```
 # Méthodologie
 

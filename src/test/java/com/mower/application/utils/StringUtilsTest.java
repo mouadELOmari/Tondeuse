@@ -1,4 +1,4 @@
-package com.tondeuse.application.utils;
+package com.mower.application.utils;
 
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class StringUtilsTest {
     public void testRemoveAllWhitespacesWithNullString() {
         String input = null;
 
-        StringUtils.removeAllWhitespaces(input);
+        StringUtils.removeAllWhitespaces(null);
 
         assertNull(null);
     }

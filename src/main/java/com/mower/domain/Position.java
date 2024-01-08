@@ -1,31 +1,31 @@
-package com.tondeuse.domain;
+package com.mower.domain;
 
 /**
- * Représente la position d'une tondeuse sur une pelouse.
+ * Represents the position of a mower on a lawn.
  */
 public class Position {
 
     /**
-     * Coordonnée X de la position.
+     * X-coordinate of the position.
      */
     private int x;
 
     /**
-     * Coordonnée Y de la position.
+     * Y-coordinate of the position.
      */
     private int y;
 
     /**
-     * Orientation de la tondeuse.
+     * Orientation of the mower.
      */
     private Orientation orientation;
 
     /**
-     * Constructeur de la classe Position.
+     * Constructor of the Position class.
      *
-     * @param x           La coordonnée X de la position.
-     * @param y           La coordonnée Y de la position.
-     * @param orientation L'orientation de la tondeuse.
+     * @param x           The X-coordinate of the position.
+     * @param y           The Y-coordinate of the position.
+     * @param orientation The orientation of the mower.
      */
     public Position(int x, int y, Orientation orientation) {
         this.x = x;
@@ -34,74 +34,74 @@ public class Position {
     }
 
     /**
-     * Avance la tondeuse d'une case dans la direction actuelle.
+     * Moves the mower one step in the current direction.
      *
-     * @param pelouse La pelouse sur laquelle la tondeuse se déplace.
+     * @param lawn The lawn on which the mower is moving.
      */
-    void avancer(Pelouse pelouse) {
+    void move(Lawn lawn) {
         int deltaX = 0;
         int deltaY = 0;
 
         switch (this.getOrientation()) {
             case N -> deltaY = 1;
             case E -> deltaX = 1;
-            case O -> deltaX = -1;
+            case W -> deltaX = -1;
             case S -> deltaY = -1;
         }
-        // la position ne peut en aucun cas dépasser les limites de la pelouse
-        int nouveauX = Math.max(0, Math.min(this.x + deltaX, pelouse.largeur()));
-        int nouveauY = Math.max(0, Math.min(this.y + deltaY, pelouse.longueur()));
+        // The position cannot exceed the limits of the lawn
+        int newX = Math.max(0, Math.min(this.x + deltaX, lawn.width()));
+        int newY = Math.max(0, Math.min(this.y + deltaY, lawn.height()));
 
-        this.x = nouveauX;
-        this.y = nouveauY;
+        this.x = newX;
+        this.y = newY;
     }
 
     /**
-     * Tourne la tondeuse à droite.
+     * Turns the mower to the right.
      */
-    void tournerADroite() {
+    void turnRight() {
         switch (this.orientation) {
             case N -> orientation = Orientation.E;
             case E -> orientation = Orientation.S;
-            case O -> orientation = Orientation.N;
-            case S -> orientation = Orientation.O;
+            case W -> orientation = Orientation.N;
+            case S -> orientation = Orientation.W;
         }
     }
 
     /**
-     * Tourne la tondeuse à gauche.
+     * Turns the mower to the left.
      */
-    void tournerAGauche() {
+    void turnLeft() {
         switch (this.orientation) {
-            case N -> orientation = Orientation.O;
+            case N -> orientation = Orientation.W;
             case E -> orientation = Orientation.N;
-            case O -> orientation = Orientation.S;
+            case W -> orientation = Orientation.S;
             case S -> orientation = Orientation.E;
         }
     }
 
     /**
-     * Récupère la coordonnée X de la position.
+     * Gets the X-coordinate of the position.
      *
-     * @return La coordonnée X de la position.
+     * @return The X-coordinate of the position.
      */
     public int getX() {
         return x;
     }
 
     /**
-     * Récupère la coordonnée Y de la position.
+     * Gets the Y-coordinate of the position.
      *
-     * @return La coordonnée Y de la position.
+     * @return The Y-coordinate of the position.
      */
     public int getY() {
         return y;
     }
 
     /**
-     * Récupère l'orientation de la tondeuse.
+     * Gets the orientation of the mower.
      *
-     * @return L'orientation de la tondeuse.
+     * @return The orientation of the mower.
      */
     public Orientation getOrientation() {
         return orientation;
