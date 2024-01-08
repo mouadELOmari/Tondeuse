@@ -23,20 +23,24 @@ public class MowerCreator {
     private final static String EXCEPTION_MESSAGE_EMPTY_LINE = "Lines cannot be null or empty\"";
 
     /**
-     * Creates a list of mowers from position and instruction lines.
+     * Creates a list of mowers from a list of lines representing mower positions and instructions.
      *
-     * @param lines The lines containing positions and instructions.
-     * @return A list of Mower objects.
-     * @throws IllegalArgumentException If the position line is empty or null.
+     * @param lines The list of lines containing mower positions and instructions.
+     * @return A list of Mower objects created from the provided lines.
+     * @throws IllegalArgumentException If the input lines are null or empty.
      */
     public List<Mower> createMowersFromLines(List<String> lines) {
+        // Check for null or empty input lines
         if (lines == null || lines.isEmpty()) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE_EMPTY_LINE);
+            throw new IllegalArgumentException("Input lines are null or empty.");
         }
+
+        // Use IntStream to iterate over pairs of lines, creating Mower objects
         return IntStream.range(0, lines.size() / 2)
                 .mapToObj(i -> createMowerFromLines(lines.get(i * 2), lines.get(i * 2 + 1)))
                 .collect(Collectors.toList());
     }
+
 
     /**
      * Creates a Mower object from position and instruction lines.

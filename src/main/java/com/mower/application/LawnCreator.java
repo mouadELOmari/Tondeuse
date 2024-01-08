@@ -20,9 +20,9 @@ public class LawnCreator {
         String cleanedInputLine = StringUtils.removeAllWhitespaces(inputLine);
 
         int width = parseDigit(cleanedInputLine.charAt(0));
-        int length = parseDigit(cleanedInputLine.charAt(1));
+        int height = parseDigit(cleanedInputLine.charAt(1));
 
-        return new Lawn(width, length);
+        return new Lawn(width, height);
     }
 
     private int parseDigit(char digit) {
