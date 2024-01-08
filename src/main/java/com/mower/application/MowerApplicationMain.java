@@ -21,19 +21,19 @@ public class MowerApplicationMain {
      */
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("Invalid path");
-        } else {
-            // Get the filename from the command line arguments
-            final String filename = args[0];
-
-            // Create an instance of the MowerController with a FileReader implementation
-            IMowerController mowerController = new MowerController(new FileReader());
-
-            // Get the final position of the mowers
-            String finalPosition = mowerController.getFinalPosition(filename);
-
-            // Log the final position information
-            LOGGER.log(Level.INFO, "The final position is {0}", finalPosition);
+            System.out.println("Invalid path. Please provide a valid file path.");
         }
+
+        // Get the filename from the command line arguments
+        final String filename = args[0];
+
+        // Create an instance of the MowerController with a FileReader implementation
+        IMowerController mowerController = new MowerController(new FileReader());
+
+        // Get the final position of the mowers
+        String finalPosition = mowerController.getFinalPosition(filename);
+
+        // Log the final position information
+        LOGGER.log(Level.INFO, "The final position is {0}", finalPosition);
     }
 }
