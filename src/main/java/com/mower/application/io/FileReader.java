@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class FileReader implements IFileReader  {
 
@@ -25,12 +26,7 @@ public class FileReader implements IFileReader  {
             LOGGER.log(Level.INFO, LOG_BEGIN_EXTRACTION);
 
             String firstLine = reader.readLine();
-
-            List<String> lines = new ArrayList<>();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.add(line);
-            }
+            List<String> lines = reader.lines().collect(Collectors.toList());
 
             return new FileContent(firstLine, lines);
         } catch (NoSuchFileException e) {
