@@ -66,11 +66,9 @@ public class MowerCreator {
      * @return A list of Instruction objects.
      */
     public List<Instruction> parseInstructions(String line) {
-        List<Instruction> instructions = new ArrayList<>();
-        for (char instructionChar : line.toCharArray()) {
-            Instruction enumInstruction = Instruction.get(instructionChar);
-            instructions.add(enumInstruction);
-        }
-        return instructions;
+        return line.chars()
+                .mapToObj(c -> Instruction.get((char) c))
+                .collect(Collectors.toList());
     }
+
 }
