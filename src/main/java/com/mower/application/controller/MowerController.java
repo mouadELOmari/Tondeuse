@@ -35,27 +35,35 @@ public class MowerController implements IMowerController {
     @Override
     public String getFinalPosition(String filePath) {
         try {
+            LOGGER.log(Level.INFO, "Initializing MowerController...");
+
             // Initialization of file readers and creators
             LawnCreator lawnCreator = new LawnCreator();
             MowerCreator mowerCreator = new MowerCreator();
 
+            LOGGER.log(Level.INFO, "Reading file: {0}", filePath);
             FileContent fileContent = fileReader.readFile(filePath);
 
             // Read the first line to set the lawn boundaries
             String lawnLimits = fileContent.firstLine();
+            LOGGER.log(Level.INFO, "Creating Lawn with dimensions: {0}", lawnLimits);
             Lawn myLawn = lawnCreator.createLawn(lawnLimits);
 
             // Read lines for each mower
             List<String> mowerLines = fileContent.lines();
+            LOGGER.log(Level.INFO, "Creating Mowers from lines...");
             List<Mower> mowers = mowerCreator.createMowersFromLines(mowerLines);
 
             // Move each mower and retrieve the final positions
             Position finalPosition;
             StringBuilder result = new StringBuilder();
+            LOGGER.log(Level.INFO, "Moving mowers and retrieving final positions...");
             for (Mower mower : mowers) {
                 finalPosition = mower.move(myLawn);
                 result.append(finalPosition);
             }
+
+            LOGGER.log(Level.INFO, "MowerController execution complete.");
             return result.toString();
 
         } catch (IOException e) {

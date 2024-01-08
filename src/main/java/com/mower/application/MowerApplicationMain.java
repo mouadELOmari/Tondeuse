@@ -20,13 +20,17 @@ public class MowerApplicationMain {
      * @param args Command line arguments. Expects the filename as the first argument.
      */
     public static void main(String[] args) {
+        LOGGER.log(Level.INFO, "Mower application started.");
+
         if (args.length < 1) {
-            System.out.println("Invalid path. Please provide a valid file path.");
-        }
+            LOGGER.log(Level.SEVERE, "Invalid path. Please provide a valid file path.");
+            LOGGER.log(Level.INFO, "Mower application terminated due to an invalid path.");
+            return;        }
 
         // Get the filename from the command line arguments
         final String filename = args[0];
 
+        LOGGER.log(Level.INFO, "Processing file: {0}", filename);
         // Create an instance of the MowerController with a FileReader implementation
         IMowerController mowerController = new MowerController(new FileReader());
 
