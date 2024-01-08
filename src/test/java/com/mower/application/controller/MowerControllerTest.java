@@ -21,7 +21,6 @@ public class MowerControllerTest {
     public void testGetFinalPosition() {
         String finalPosition = mowerController.getFinalPosition("fake/path");
 
-        // Add assertions based on the expected behavior of your application
         Assert.assertEquals("14W ", finalPosition);
     }
 }
