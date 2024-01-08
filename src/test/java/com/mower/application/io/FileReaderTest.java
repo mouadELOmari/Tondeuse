@@ -25,39 +25,31 @@ public class FileReaderTest {
         // Instantiate the FileReader
         FileReader fileReader = new FileReader();
 
-        // Act
         FileContent fileContent = fileReader.readFile(filePath);
 
-        // Assert
         Assert.assertEquals(firstLine, fileContent.firstLine());
         Assert.assertEquals(expectedLines, fileContent.lines());
     }
 
     @Test
     public void readFile_FileNotFound_ThrowsFileNotFoundException() {
-        // Arrange
         String filePath = "nonexistentFilePath";
 
-        // Instantiate the FileReader
         FileReader fileReader = new FileReader();
 
-        // Act & Assert
         Assert.assertThrows(FileNotFoundException.class, () -> fileReader.readFile(filePath));
     }
 
     @Test
     public void readFile_IOExceptionInReader_ThrowsIOException() {
-        // Arrange
         String filePath = "validFilePath";
 
-        // Create a custom FileReader for testing (may need to expose protected methods)
         FileReader fileReader = new FileReader() {
             protected BufferedReader createBufferedReader(String filePath) throws IOException {
                 throw new IOException(); // Simulate an IOException
             }
         };
 
-        // Act & Assert
         Assert.assertThrows(IOException.class, () -> fileReader.readFile(filePath));
     }
 
