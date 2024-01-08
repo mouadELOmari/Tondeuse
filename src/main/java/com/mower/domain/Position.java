@@ -39,21 +39,22 @@ public class Position {
      * @param lawn The lawn on which the mower is moving.
      */
     void move(Lawn lawn) {
-        int deltaX = 0;
-        int deltaY = 0;
+        int deltaX = switch (this.getOrientation()) {
+            case N -> 0;
+            case E -> 1;
+            case W -> -1;
+            case S -> 0;
+        };
 
-        switch (this.getOrientation()) {
-            case N -> deltaY = 1;
-            case E -> deltaX = 1;
-            case W -> deltaX = -1;
-            case S -> deltaY = -1;
-        }
-        // The position cannot exceed the limits of the lawn
-        int newX = Math.max(0, Math.min(this.x + deltaX, lawn.width()));
-        int newY = Math.max(0, Math.min(this.y + deltaY, lawn.height()));
-
-        this.x = newX;
-        this.y = newY;
+        int deltaY = switch (this.getOrientation()) {
+            case N -> 1;
+            case E -> 0;
+            case W -> 0;
+            case S -> -1;
+        };
+// The position cannot exceed the limits of the lawn
+        this.x = Math.max(0, Math.min(this.x + deltaX, lawn.width()));
+        this.y = Math.max(0, Math.min(this.y + deltaY, lawn.height()));
     }
 
     /**
