@@ -40,7 +40,7 @@ public class MowerControllerTest {
     }
 
     @Test
-    public void testGetFinalPosition() {
+    public void testGetFinalPosition() throws IOException{
         // Create instances of mocked classes
         IFileReader fileReader = new TestFileReader();
         ILawnFactory lawnCreator = new TestLawnFactory();

@@ -39,8 +39,7 @@ public class MowerController implements IMowerController {
     }
 
     @Override
-    public String getFinalPosition(String filePath) {
-        try {
+    public String getFinalPosition(String filePath) throws IOException {
             LOGGER.log(Level.INFO, "Initializing MowerController...");
 
             LOGGER.log(Level.INFO, "Reading file: {0}", filePath);
@@ -68,9 +67,6 @@ public class MowerController implements IMowerController {
             LOGGER.log(Level.INFO, "MowerController execution complete.");
             return result.toString();
 
-        } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, READ_FILE_ERROR_EXCEPTION, e);
-            throw new RuntimeException(READ_FILE_ERROR_EXCEPTION, e);
-        }
+
     }
 }

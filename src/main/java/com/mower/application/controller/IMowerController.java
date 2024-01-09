@@ -1,5 +1,7 @@
 package com.mower.application.controller;
 
+import java.io.IOException;
+
 /**
  * Interface for managing mowers, reading data, and retrieving final positions.
  */
@@ -11,5 +13,5 @@ public interface IMowerController {
      * @param filePath The path of the file containing mower data.
      * @return A string representing the final positions of the mowers.
      */
-    String getFinalPosition(String filePath);
+    String getFinalPosition(String filePath) throws IOException;
 }
