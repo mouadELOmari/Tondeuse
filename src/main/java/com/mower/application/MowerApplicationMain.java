@@ -3,6 +3,7 @@ package com.mower.application;
 import com.mower.application.controller.IMowerController;
 import com.mower.application.factory.MowerControllerFactory;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +31,7 @@ public class MowerApplicationMain {
         }
     }
 
-    private static void processMowerApplication(String[] args) {
+    private static void processMowerApplication(String[] args) throws IOException {
         if (args.length < 1) {
             throw new IllegalArgumentException("Invalid path. Please provide a valid file path.");
         }
