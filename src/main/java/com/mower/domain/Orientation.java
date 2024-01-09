@@ -32,6 +32,34 @@ public enum Orientation {
             default -> throw new IllegalArgumentException("Unexpected value: " + upperCaseOrientation);
         };
     }
+    /**
+     * Turns the orientation to the right.
+     *
+     * @return The new orientation after turning right.
+     */
+    public Orientation turnRight() {
+        return switch (this) {
+            case N -> E;
+            case E -> S;
+            case W -> N;
+            case S -> W;
+        };
+    }
+
+    /**
+     * Turns the orientation to the left.
+     *
+     * @return The new orientation after turning left.
+     */
+    public Orientation turnLeft() {
+        return switch (this) {
+            case N -> W;
+            case E -> N;
+            case W -> S;
+            case S -> E;
+        };
+    }
+
 
     @Override
     public String toString() {

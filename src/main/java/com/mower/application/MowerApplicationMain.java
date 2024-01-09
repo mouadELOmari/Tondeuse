@@ -30,7 +30,7 @@ public class MowerApplicationMain {
         }
     }
 
-    private static void processMowerApplication(String[] args) throws Exception {
+    private static void processMowerApplication(String[] args) {
         if (args.length < 1) {
             throw new IllegalArgumentException("Invalid path. Please provide a valid file path.");
         }

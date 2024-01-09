@@ -61,24 +61,14 @@ public class Position {
      * Turns the mower to the right.
      */
     void turnRight() {
-        switch (this.orientation) {
-            case N -> orientation = Orientation.E;
-            case E -> orientation = Orientation.S;
-            case W -> orientation = Orientation.N;
-            case S -> orientation = Orientation.W;
-        }
+        orientation = orientation.turnRight();
     }
 
     /**
      * Turns the mower to the left.
      */
     void turnLeft() {
-        switch (this.orientation) {
-            case N -> orientation = Orientation.W;
-            case E -> orientation = Orientation.N;
-            case W -> orientation = Orientation.S;
-            case S -> orientation = Orientation.E;
-        }
+        orientation = orientation.turnLeft();
     }
 
     /**
