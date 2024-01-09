@@ -37,7 +37,7 @@ public class MowerFactory implements IMowerFactory {
         // Use IntStream to iterate over pairs of lines, creating Mower objects
         return IntStream.range(0, lines.size() / 2)
                 .mapToObj(i -> createMowerFromLines(lines.get(i * 2), lines.get(i * 2 + 1)))
-                .collect(Collectors.toList());
+                .toList();
     }
 
 
