@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * The MowerController class is responsible for managing mowers,
@@ -60,10 +61,11 @@ public class MowerController implements IMowerController {
             Position finalPosition;
             StringBuilder result = new StringBuilder();
             LOGGER.log(Level.INFO, "Moving mowers and retrieving final positions...");
-            for (Mower mower : mowers) {
-                finalPosition = mower.move(myLawn);
-                result.append(finalPosition);
-            }
+            List<Position> finalPositions = mowers.stream()
+                    .map(mower -> mower.move(myLawn))
+                    .toList();
+
+            finalPositions.forEach(result::append);
 
             LOGGER.log(Level.INFO, "MowerController execution complete.");
             return result.toString();
