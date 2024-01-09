@@ -25,7 +25,7 @@ public class FileReader implements IFileReader  {
             LOGGER.log(Level.INFO, LOG_BEGIN_EXTRACTION);
 
             String firstLine = reader.readLine();
-            List<String> lines = reader.lines().collect(Collectors.toList());
+            List<String> lines = reader.lines().toList();
 
             return new FileContent(firstLine, lines);
         } catch (NoSuchFileException e) {
