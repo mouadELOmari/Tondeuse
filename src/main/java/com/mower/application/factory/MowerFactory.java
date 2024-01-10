@@ -7,7 +7,6 @@ import com.mower.domain.Position;
 import com.mower.domain.Mower;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
