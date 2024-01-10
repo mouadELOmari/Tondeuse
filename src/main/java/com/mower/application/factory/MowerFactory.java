@@ -74,7 +74,7 @@ public class MowerFactory implements IMowerFactory {
     public List<Instruction> parseInstructions(String line) {
         return line.chars()
                 .mapToObj(c -> Instruction.get((char) c))
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }
