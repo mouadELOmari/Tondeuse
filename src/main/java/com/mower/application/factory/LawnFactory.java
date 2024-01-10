@@ -27,7 +27,6 @@ public class LawnFactory implements ILawnFactory{
 
     private int parseDigit(char digit) {
         return Optional.of(Character.getNumericValue(digit))
-                .filter(val -> val >= 0 && val <= 9)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid digit: " + digit));
     }
 }
